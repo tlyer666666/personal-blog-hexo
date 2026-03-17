@@ -1,0 +1,19 @@
+﻿{
+  "name": "personal-blog-hexo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal blog powered by Hexo + NexT",
+  "scripts": {
+    "clean": "hexo clean",
+    "build": "hexo generate",
+    "server": "hexo server",
+    "deploy": "hexo deploy"
+  },
+  "dependencies": {
+    "hexo": "^7.3.0",
+    "hexo-cli": "^4.3.2",
+    "hexo-deployer-git": "^4.0.0",
+    "hexo-generator-searchdb": "^1.4.1",
+    "hexo-theme-next": "^8.20.0"
+  }
+}
