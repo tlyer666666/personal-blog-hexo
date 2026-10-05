@@ -1,53 +1,60 @@
-﻿# Hexo + NexT Blog
+# Hexo + NexT 博客工程
 
-## Before You Start
+基于 Hexo 7 与 NexT 8 的博客脚手架，附带建仓与首次发布脚本。
 
-请先安装：
+仓库里的站点信息都是占位符，使用前先改成自己的账号。
+
+## 环境要求
 
 - Node.js LTS（含 npm）
 - Git
+- 可选：GitHub CLI（`gh`），只有用脚本自动建仓时才需要
 
-可选：
+## 1. 改配置
 
-- GitHub CLI (`gh`) 用于自动创建仓库
+`_config.yml`：
 
-## A. 自动创建 GitHub Pages 仓库（可选）
+- `url`：`https://<你的GitHub用户名>.github.io`
+- `deploy.repo`：`https://github.com/<你的GitHub用户名>/<你的GitHub用户名>.github.io.git`
 
-```powershell
-cd E:\codex\personal-blog-hexo
-powershell -ExecutionPolicy Bypass -File .\scripts\create-pages-repo.ps1 -GitHubUser 542869246
-```
+`_config.next.yml` 里的 `social` 链接同理。
 
-默认创建：`542869246/542869246.github.io`
+## 2. 本地预览
 
-## B. 初始化并首次发布（一键）
-
-```powershell
-cd E:\codex\personal-blog-hexo
-powershell -ExecutionPolicy Bypass -File .\scripts\first-publish.ps1 -GitHubUser 542869246
-```
-
-常用参数：
-
-- `-PagesRepo your-pages-repo`
-- `-DeployBranch main`
-- `-SourceRepoUrl https://github.com/<you>/<source-repo>.git`
-- `-SkipInstall`（调试时跳过 npm install）
-- `-SkipCommit`（跳过初始提交）
-
-## C. 手动开发命令
+在仓库根目录（`<仓库克隆路径>`）执行：
 
 ```powershell
 npm install
 npm run server
+```
+
+默认地址 http://localhost:4000。
+
+## 3. 生成与部署
+
+```powershell
 npm run build
 npm run deploy
 ```
 
-## Theme Notes
+## 一键脚本（可选，Windows PowerShell）
 
-主题配置在 `_config.next.yml`，已启用：
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\first-publish.ps1 -GitHubUser <你的GitHub用户名>
+```
 
-- 暗色模式
-- 本地搜索
-- 代码块复制按钮
+脚本会检查 node / npm / git，安装依赖、生成静态文件并部署到 GitHub Pages。它还会按传入的用户名改写 `_config.yml` 里的 `deploy.repo` 与 `deploy.branch`，运行后留意这两处改动。
+
+自动创建 `<你的GitHub用户名>.github.io` 仓库（需要 `gh` 已登录）：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\create-pages-repo.ps1 -GitHubUser <你的GitHub用户名>
+```
+
+两个脚本的 `-GitHubUser` 都必须显式传入，没有默认值。其它参数：`-PagesRepo`（默认 `<用户名>.github.io`）、`-DeployBranch`（默认 `main`）、`-SourceRepoUrl`、`-SkipInstall`、`-SkipCommit`。
+
+`setup.ps1` 只做环境检查并启动本地预览，等价于 `npm install` 加 `npm run server`。
+
+## 主题
+
+主题配置在 `_config.next.yml`，已启用暗色模式、本地搜索和代码块复制按钮。
