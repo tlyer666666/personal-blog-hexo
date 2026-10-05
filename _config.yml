@@ -9,7 +9,7 @@ language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
-url: https://542869246.github.io
+url: "https://<你的GitHub用户名>.github.io"
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -79,7 +79,7 @@ theme: next
 # Deployment
 deploy:
   type: git
-  repo: https://github.com/542869246/542869246.github.io.git
+  repo: "https://github.com/<你的GitHub用户名>/<你的GitHub用户名>.github.io.git"
   branch: main
 
 # Search plugin

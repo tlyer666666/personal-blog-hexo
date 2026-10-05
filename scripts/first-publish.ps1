@@ -1,6 +1,7 @@
 ﻿[CmdletBinding()]
 param(
-  [string]$GitHubUser = "542869246",
+  [Parameter(Mandatory = $true)]
+  [string]$GitHubUser,
   [string]$PagesRepo,
   [string]$DeployBranch = "main",
   [string]$SourceRepoUrl = "",

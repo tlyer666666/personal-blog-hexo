@@ -13,8 +13,8 @@ menu:
   archives: /archives/ || fa fa-archive
 
 social:
-  GitHub: https://github.com/542869246 || fab fa-github
-  Blog: https://542869246.github.io || fa fa-rss
+  GitHub: https://github.com/<你的GitHub用户名> || fab fa-github
+  Blog: https://<你的GitHub用户名>.github.io || fa fa-rss
 
 avatar:
   url: /images/avatar.svg
