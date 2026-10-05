@@ -12,4 +12,4 @@ type: "about"
 - Hexo / NexT 主题定制
 - 提效工作流和个人复盘
 
-欢迎通过 GitHub 联系我：<https://github.com/542869246>
+欢迎通过 GitHub 联系我：https://github.com/<你的GitHub用户名>
