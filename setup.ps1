@@ -1,4 +1,19 @@
-﻿$ErrorActionPreference = "Stop"
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
+
+function Invoke-Checked {
+  param(
+    [Parameter(Mandatory = $true)]
+    [string]$FilePath,
+    [string[]]$Arguments = @()
+  )
+  & $FilePath @Arguments
+  if ($LASTEXITCODE -ne 0) {
+    throw "命令执行失败（退出码 $LASTEXITCODE）：$FilePath $($Arguments -join ' ')"
+  }
+}
+
+Set-Location -LiteralPath $PSScriptRoot
 
 Write-Host "[1/4] 检查 Node.js"
 if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
@@ -16,5 +31,5 @@ if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
 }
 
 Write-Host "[4/4] 安装依赖并启动"
-npm install
-npm run server
+Invoke-Checked -FilePath "npm" -Arguments @("install")
+Invoke-Checked -FilePath "npm" -Arguments @("run", "server")
